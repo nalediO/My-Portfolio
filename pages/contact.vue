@@ -150,4 +150,12 @@ const handleSubmit = () => {
   .then(() => alert('Message sent successfully!'))
   .catch(error => alert('Error: ' + error))
 }
+
+const socials = [
+  { name: 'GitHub', icon: 'i-uil-github', url: 'https://github.com/nalediO' },
+  { name: 'LinkedIn', icon: 'i-uil-linkedin', url: 'https://linkedin.com/in/yourusername' },
+  { name: 'Email', icon: 'i-uil-envelope', url: 'mailto:omphemetsenaledi45@gmail.com' }
+]
+
+
 </script>

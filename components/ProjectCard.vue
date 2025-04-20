@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <!-- Project Image -->
+  
       <NuxtImg 
         :src="project.image" 
         :alt="project.title"
@@ -23,7 +23,7 @@
           </span>
         </div>
         
-        <!-- Buttons -->
+        
         <div class="flex gap-3">
           <a 
             v-if="project.github"

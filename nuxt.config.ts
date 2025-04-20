@@ -9,7 +9,12 @@ export default defineNuxtConfig({
   tailwindcss: {
     
     exposeConfig: true
+  },
+  
+  runtimeConfig: {
+    public: {
+      weatherApiKey: process.env.OPENWEATHER_API_KEY
+    }
   }
-
 
 })
