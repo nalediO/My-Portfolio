@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
     <div class="container mx-auto px-4 py-12">
-      <!-- Page Header -->
+     
       <header class="mb-12 text-center">
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Projects</h1>
         <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -9,7 +9,7 @@
         </p>
       </header>
 
-      <!-- Static Projects -->
+    
       <div v-if="staticProjects.length > 0" class="mb-16">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
           Featured Projects
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <!-- GitHub Projects -->
+     
       <div v-if="githubProjects && githubProjects.length > 0" class="mb-16">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
           GitHub Repositories
@@ -66,12 +66,12 @@
 </template>
 
 <script setup>
-// Initialize with empty array to prevent null errors
+
 const githubProjects = ref([])
-const loading = ref(true) // Start in loading state
+const loading = ref(true) 
 const error = ref(null)
 
-// Static projects data
+
 const staticProjects = [
   {
     title: "E-commerce Website",
@@ -96,13 +96,13 @@ const staticProjects = [
   }
 ]
 
-// Fetch GitHub projects
+
 onMounted(async () => {
   try {
     const { data } = await useFetch(
       'https://api.github.com/users/nalediO/repos?sort=updated&per_page=3'
     )
-    githubProjects.value = data.value || [] // Ensure it's never null
+    githubProjects.value = data.value || [] 
   } catch (err) {
     error.value = 'Failed to load GitHub projects. Please try again later.'
     console.error('GitHub API error:', err)

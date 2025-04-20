@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   
   runtimeConfig: {
     public: {
-      weatherApiKey: process.env.OPENWEATHER_API_KEY
+      weatherApiKey: process.env.OPENWEATHER_API_KEY || '',
     }
   }
 
