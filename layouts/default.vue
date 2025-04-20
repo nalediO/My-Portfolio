@@ -22,7 +22,7 @@
         
         <!-- Footer -->
         <footer class="mt-8 py-4 border-t border-blue-200 dark:border-blue-900 bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-          <p class="text-center text-blue-600 dark:text-blue-400">© ON Mokgothadi</p>
+          <p class="text-center text-blue-600 dark:text-blue-400">© 2025 ON Mokgothadi</p>
         </footer>
       </div>
     </div>

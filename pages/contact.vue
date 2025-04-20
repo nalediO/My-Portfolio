@@ -1,74 +1,67 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <div class="container mx-auto px-4 py-12">
-      
-      <header class="mb-12 text-center">
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+      <!-- Contact Form -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
           Have a project in mind or want to collaborate? Reach out to me!
         </p>
-      </header>
 
-     
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        
-        <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
-          <form 
-              name="contact" 
-              method="POST" 
-              data-netlify="true"
-              @submit.prevent="handleSubmit"
-              class="space-y-6"
-          >
-           <input type="hidden" name="form-name" value="contact">
-  
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="space-y-6"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
+
           <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
             <input
-                v-model="form.name"
-                type="text"
-                id="name"
-                name="name"
-                required
-                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
-            >
+              type="text"
+              name="name"
+              required
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
 
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
             <input
-              v-model="form.email"
               type="email"
-              id="email"
               name="email"
               required
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
-            >
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
 
           <div>
-            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message</label>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message</label>
             <textarea
-              v-model="form.message"
-              id="message"
               name="message"
               rows="5"
               required
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></textarea>
           </div>
 
-         <button
-           type="submit"
-           class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"
-         >
-           Send Message
-         </button>
-          </form>
-        </div>
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
 
-  
-        <div class="space-y-6">
+      <div class="space-y-6">
           <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
             <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h2>
             
@@ -122,40 +115,13 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup>
-const form = reactive({
-  name: '',
-  email: '',
-  message: ''
-})
-
-const encode = (data) => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
-}
-
-const handleSubmit = () => {
-  fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: encode({
-      'form-name': 'contact',
-      ...form
-    })
-  })
-  .then(() => alert('Message sent successfully!'))
-  .catch(error => alert('Error: ' + error))
-}
 
 const socials = [
   { name: 'GitHub', icon: 'i-uil-github', url: 'https://github.com/nalediO' },
   { name: 'LinkedIn', icon: 'i-uil-linkedin', url: 'https://linkedin.com/in/yourusername' },
   { name: 'Email', icon: 'i-uil-envelope', url: 'mailto:omphemetsenaledi45@gmail.com' }
 ]
-
-
 </script>
