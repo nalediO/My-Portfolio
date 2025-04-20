@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4">
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-      <!-- Contact Form -->
+      
       <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h1>
         <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
@@ -9,6 +9,7 @@
         </p>
 
         <form
+        
           name="contact"
           method="POST"
           data-netlify="true"
@@ -118,6 +119,31 @@
 </template>
 
 <script setup>
+
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", handleSubmit);
+  }
+});
+
+const handleSubmit = event => {
+  event.preventDefault();
+  
+  const myForm = event.target;
+  const formData = new FormData(myForm);
+  
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  })
+    .then(() => alert("Form successfully submitted"))
+    .catch(error => alert(error));
+};
+
 
 const socials = [
   { name: 'GitHub', icon: 'i-uil-github', url: 'https://github.com/nalediO' },
