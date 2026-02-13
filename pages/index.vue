@@ -208,7 +208,7 @@ const socials = [
   { 
     name: 'LinkedIn', 
     icon: 'i-uil-linkedin', 
-    url: 'https://linkedin.com/in/yourusername' 
+    url: 'https://linkedin.com/in/omphemetse-mokgothadi' 
   },
   { 
     name: 'Email', 
